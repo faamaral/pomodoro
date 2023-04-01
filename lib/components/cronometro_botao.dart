@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../store/pomodoro.store.dart';
 
 class CronometroBotao extends StatelessWidget {
   final String text;
   final IconData icon;
-  const CronometroBotao({super.key, required this.text, required this.icon});
+  final void Function()? click;
+  const CronometroBotao({super.key, required this.text, required this.icon, this.click});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +20,15 @@ class CronometroBotao extends StatelessWidget {
         ),
         textStyle: const TextStyle(fontSize: 25),
       ),
-      onPressed: () {},
+      onPressed: click,
       child: Row(
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 10),
-            child: Icon(icon, size: 35,),
+            child: Icon(
+              icon,
+              size: 35,
+            ),
           ),
           Text(text),
         ],
